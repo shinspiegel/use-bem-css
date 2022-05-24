@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/use-bem-css/static/css/main.ebf3efb5.chunk.css",
+    "main.js": "/use-bem-css/static/js/main.440aa177.chunk.js",
+    "main.js.map": "/use-bem-css/static/js/main.440aa177.chunk.js.map",
+    "runtime-main.js": "/use-bem-css/static/js/runtime-main.f24e6e3b.js",
+    "runtime-main.js.map": "/use-bem-css/static/js/runtime-main.f24e6e3b.js.map",
+    "static/js/2.d3d83bca.chunk.js": "/use-bem-css/static/js/2.d3d83bca.chunk.js",
+    "static/js/2.d3d83bca.chunk.js.map": "/use-bem-css/static/js/2.d3d83bca.chunk.js.map",
+    "index.html": "/use-bem-css/index.html",
+    "precache-manifest.811a0b2f1dd42b6eaa2f1cd488ed61a7.js": "/use-bem-css/precache-manifest.811a0b2f1dd42b6eaa2f1cd488ed61a7.js",
+    "service-worker.js": "/use-bem-css/service-worker.js",
+    "static/css/main.ebf3efb5.chunk.css.map": "/use-bem-css/static/css/main.ebf3efb5.chunk.css.map",
+    "static/js/2.d3d83bca.chunk.js.LICENSE.txt": "/use-bem-css/static/js/2.d3d83bca.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f24e6e3b.js",
+    "static/js/2.d3d83bca.chunk.js",
+    "static/css/main.ebf3efb5.chunk.css",
+    "static/js/main.440aa177.chunk.js"
+  ]
+}
