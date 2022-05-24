@@ -7,11 +7,12 @@
   "dependencies": {
     "react": "link:../node_modules/react",
     "react-dom": "^16.9.0",
+    "react-highlight": "^0.14.0",
     "react-scripts": "^3.0.1",
     "use-bem-css": "link:.."
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "export PORT=8080 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
