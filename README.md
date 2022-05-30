@@ -2,7 +2,7 @@
 
 > A hook to generate BEM styled string to use on `classNames` for react components
 
-[![NPM](https://img.shields.io/npm/v/use-bem-css.svg)](https://www.npmjs.com/package/@shinspiegel/use-bem-css)
+[![NPM](https://img.shields.io/npm/v/@shinspiegel/use-bem-css.svg)](https://www.npmjs.com/package/@shinspiegel/use-bem-css)
 
 ## Install
 
