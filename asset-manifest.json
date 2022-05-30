@@ -1,22 +1,13 @@
 {
   "files": {
-    "main.css": "/use-bem-css/static/css/main.c9bb1fc7.chunk.css",
-    "main.js": "/use-bem-css/static/js/main.a2e45395.chunk.js",
-    "main.js.map": "/use-bem-css/static/js/main.a2e45395.chunk.js.map",
-    "runtime-main.js": "/use-bem-css/static/js/runtime-main.f24e6e3b.js",
-    "runtime-main.js.map": "/use-bem-css/static/js/runtime-main.f24e6e3b.js.map",
-    "static/js/2.f062afa4.chunk.js": "/use-bem-css/static/js/2.f062afa4.chunk.js",
-    "static/js/2.f062afa4.chunk.js.map": "/use-bem-css/static/js/2.f062afa4.chunk.js.map",
+    "main.css": "/use-bem-css/static/css/main.d5c11577.css",
+    "main.js": "/use-bem-css/static/js/main.4d8e981b.js",
     "index.html": "/use-bem-css/index.html",
-    "precache-manifest.e3dd09fba365e8ceb42bfcbd94358a42.js": "/use-bem-css/precache-manifest.e3dd09fba365e8ceb42bfcbd94358a42.js",
-    "service-worker.js": "/use-bem-css/service-worker.js",
-    "static/css/main.c9bb1fc7.chunk.css.map": "/use-bem-css/static/css/main.c9bb1fc7.chunk.css.map",
-    "static/js/2.f062afa4.chunk.js.LICENSE.txt": "/use-bem-css/static/js/2.f062afa4.chunk.js.LICENSE.txt"
+    "main.d5c11577.css.map": "/use-bem-css/static/css/main.d5c11577.css.map",
+    "main.4d8e981b.js.map": "/use-bem-css/static/js/main.4d8e981b.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.f24e6e3b.js",
-    "static/js/2.f062afa4.chunk.js",
-    "static/css/main.c9bb1fc7.chunk.css",
-    "static/js/main.a2e45395.chunk.js"
+    "static/css/main.d5c11577.css",
+    "static/js/main.4d8e981b.js"
   ]
 }
