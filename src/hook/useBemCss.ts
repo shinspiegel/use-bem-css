@@ -15,7 +15,7 @@ type UseBemCssOptionModifier<Name extends string, List extends string> = {
 
 type UseBemCss<Name extends string, List extends string> = Record<
   Lowercase<Name> | `${Lowercase<Name>}${Capitalize<Lowercase<List>>}`,
-  number
+  string
 >;
 
 export const useBemCss = <Name extends string, List extends string>({
@@ -115,7 +115,7 @@ export const useBemCss = <Name extends string, List extends string>({
    * This will construct the element with the need typing
    * Will also run over all the prepared values and add as a single string on the typed `result`
    */
-  const result = {} as Record<Lowercase<Name> | `${Lowercase<Name>}${Capitalize<Lowercase<List>>}`, number>;
+  const result = {} as Record<Lowercase<Name> | `${Lowercase<Name>}${Capitalize<Lowercase<List>>}`, string>;
 
   Object.keys(prepare).forEach((key) => {
     result[key] = prepare[key].join(" ");
