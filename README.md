@@ -1,4 +1,4 @@
-# use-bem-css
+# @shinspiegel/use-bem-css
 
 > A hook to generate BEM styled string to use on `classNames` for react components
 
@@ -7,14 +7,14 @@
 ## Install
 
 ```bash
-npm install --save use-bem-css
+npm install --save @shinspiegel/use-bem-css
 ```
 
 ## Usage
 
 ```jsx
 import React from "react";
-import { useBemCss } from "use-bem-css";
+import { useBemCss } from "@shinspiegel/use-bem-css";
 
 const App = () => {
   const { button, buttonInput, buttonLabel, buttonSpan } = useBemCss({
