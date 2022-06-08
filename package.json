@@ -1,6 +1,6 @@
 {
   "name": "@shinspiegel/use-bem-css",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A hook to generate BEM styled string to use on classNames for react components",
   "homepage": "https://shinspiegel.github.io/use-bem-css/",
   "author": "ShinSpiegel",
@@ -28,7 +28,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "peerDependencies": {
-    "react": "^16.9.0"
+    "react": ">=16.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",

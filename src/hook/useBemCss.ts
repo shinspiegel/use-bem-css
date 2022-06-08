@@ -1,19 +1,19 @@
 import { camelize, capitalize, kebabize } from "../utils";
 
-type UseBemCssOptions<Name extends string, List extends string> = {
+export type UseBemCssOptions<Name extends string, List extends string> = {
   className: Name;
   blocks: string[];
   elements: List[];
   modifiers?: UseBemCssOptionModifier<Name, List>[];
 };
 
-type UseBemCssOptionModifier<Name extends string, List extends string> = {
+export type UseBemCssOptionModifier<Name extends string, List extends string> = {
   modifier: string;
   affects?: (Name | List)[];
   isActive?: boolean;
 };
 
-type UseBemCss<Name extends string, List extends string> = Record<
+export type UseBemCss<Name extends string, List extends string> = Record<
   Lowercase<Name> | `${Lowercase<Name>}${Capitalize<Lowercase<List>>}`,
   string
 >;
