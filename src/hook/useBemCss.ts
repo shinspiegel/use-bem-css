@@ -1,29 +1,38 @@
 import { camelize, capitalize, kebabize } from "../utils";
 
-export type UseBemCssOptions<Name extends string, List extends string> = {
-  className: Name;
-  blocks: string[];
-  elements: List[];
-  modifiers?: UseBemCssOptionModifier<Name, List>[];
+export type Option<ClassName extends string, Elements extends string> = {
+  className: ClassName;
+  blocks?: string[];
+  elements?: Elements[];
+  modifiers?: Modifier<ClassName, Elements>[];
 };
 
-export type UseBemCssOptionModifier<Name extends string, List extends string> = {
+export type Modifier<ClassName extends string, Elements extends string> = {
   modifier: string;
-  affects?: (Name | List)[];
+  affects?: (ClassName | Elements)[];
   isActive?: boolean;
 };
 
-export type UseBemCss<Name extends string, List extends string> = Record<
-  Lowercase<Name> | `${Lowercase<Name>}${Capitalize<Lowercase<List>>}`,
+export type ReturnType<
+  ClassName extends string,
+  Elements extends string
+> = Record<
+  | Lowercase<ClassName>
+  | `${Lowercase<ClassName>}${Capitalize<Lowercase<Elements>>}`,
   string
 >;
 
-export const useBemCss = <Name extends string, List extends string>({
+export type UseBemCss<
+  ClassName extends string,
+  Elements extends string
+> = ReturnType<ClassName, Elements>;
+
+export const useBemCss = <ClassName extends string, Elements extends string>({
   className,
   blocks = [],
   elements = [],
   modifiers = [],
-}: UseBemCssOptions<Name, List>): UseBemCss<Name, List> => {
+}: Option<ClassName, Elements>): UseBemCss<ClassName, Elements> => {
   /**
    * This is an empty object to be used as unrestricted to update and create all the classes
    * This object will also holds the values already in kebab-case version
@@ -31,7 +40,7 @@ export const useBemCss = <Name extends string, List extends string>({
    */
   const prepare: Record<string, string[]> = {};
 
-  blocks.forEach((block) => {
+  blocks.filter(Boolean).forEach((block) => {
     /**
      * Will create the base blocks and add on the className
      * If there is multiple blocks it will create multiple entries
@@ -53,7 +62,7 @@ export const useBemCss = <Name extends string, List extends string>({
      * The value will be a BEM styled value of a `classname__element`
      */
     if (elements && elements?.length > 0) {
-      elements.forEach((element) => {
+      elements.filter(Boolean).forEach((element) => {
         const elementKey = capitalize(camelize(element.toLowerCase()));
         const elementValue = kebabize(element);
 
@@ -61,7 +70,9 @@ export const useBemCss = <Name extends string, List extends string>({
           prepare[`${blockKey}${elementKey}`] = [];
         }
 
-        prepare[`${blockKey}${elementKey}`].push(`${blockValue}__${elementValue}`);
+        prepare[`${blockKey}${elementKey}`].push(
+          `${blockValue}__${elementValue}`
+        );
       });
     }
   });
@@ -74,7 +85,7 @@ export const useBemCss = <Name extends string, List extends string>({
    * Like: `block--modifier` or `block__element--modifier`
    */
   if (modifiers && modifiers.length > 0) {
-    modifiers.forEach(({ modifier, isActive, affects }) => {
+    modifiers.filter(Boolean).forEach(({ modifier, isActive, affects }) => {
       if (isActive) {
         const modifierValue = kebabize(modifier);
 
@@ -115,7 +126,7 @@ export const useBemCss = <Name extends string, List extends string>({
    * This will construct the element with the need typing
    * Will also run over all the prepared values and add as a single string on the typed `result`
    */
-  const result = {} as Record<Lowercase<Name> | `${Lowercase<Name>}${Capitalize<Lowercase<List>>}`, string>;
+  const result = {} as ReturnType<ClassName, Elements>;
 
   Object.keys(prepare).forEach((key) => {
     result[key] = prepare[key].join(" ");

@@ -1,15 +1,34 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { useBemCss } from "./useBemCss";
 
+test("should generate nothing to return without any properties", () => {
+  const { result } = renderHook(() => useBemCss({ className: "block" }));
+
+  expect(Object.keys(result.current).length).toBe(0);
+});
+
 test("should generate base classes for components", () => {
   const { result } = renderHook(() =>
     useBemCss({
       className: "block",
       blocks: ["block"],
-      elements: [],
     })
   );
 
+  expect(result.current.hasOwnProperty("block")).toBe(true);
+  expect(result.current.block).toBe("block");
+});
+
+test("should not generate elements that are undefined", () => {
+  const { result } = renderHook(() =>
+    useBemCss({
+      className: "block",
+      blocks: ["block"],
+      elements: [undefined, undefined, undefined],
+    })
+  );
+
+  expect(Object.keys(result.current).length).toBe(1);
   expect(result.current.hasOwnProperty("block")).toBe(true);
   expect(result.current.block).toBe("block");
 });
@@ -19,7 +38,6 @@ test("should be able to receive a kebab block name", () => {
     useBemCss({
       className: "block",
       blocks: ["kebab-block"],
-      elements: [],
     })
   );
 
@@ -32,7 +50,6 @@ test("should be able to receive a kebab block name", () => {
     useBemCss({
       className: "block",
       blocks: ["kebab-block"],
-      elements: [],
     })
   );
 
@@ -70,7 +87,9 @@ test("should generate classes and modifier for all the blocks and elements", () 
   expect(result.current.block).toBe("block block--modifier");
 
   expect(result.current.hasOwnProperty("blockElement")).toBe(true);
-  expect(result.current.blockElement).toBe("block__element block__element--modifier");
+  expect(result.current.blockElement).toBe(
+    "block__element block__element--modifier"
+  );
 });
 
 test("should generate classes and apply modifier only for the block", () => {
@@ -96,7 +115,9 @@ test("should generate classes and apply modifier only for the element", () => {
       className: "block",
       blocks: ["block"],
       elements: ["element"],
-      modifiers: [{ modifier: "modifier", isActive: true, affects: ["element"] }],
+      modifiers: [
+        { modifier: "modifier", isActive: true, affects: ["element"] },
+      ],
     })
   );
 
@@ -104,7 +125,9 @@ test("should generate classes and apply modifier only for the element", () => {
   expect(result.current.block).toBe("block");
 
   expect(result.current.hasOwnProperty("blockElement")).toBe(true);
-  expect(result.current.blockElement).toBe("block__element block__element--modifier");
+  expect(result.current.blockElement).toBe(
+    "block__element block__element--modifier"
+  );
 });
 
 test("should be able to have multiple block names", () => {
@@ -152,7 +175,9 @@ test("should be able to have multiple block and element names", () => {
   expect(result.current.block).toBe("primary-block secondary-block");
 
   expect(result.current.hasOwnProperty("blockPrimaryelement")).toBe(true);
-  expect(result.current.blockPrimaryelement).toBe("primary-block__primary-element secondary-block__primary-element");
+  expect(result.current.blockPrimaryelement).toBe(
+    "primary-block__primary-element secondary-block__primary-element"
+  );
 
   expect(result.current.hasOwnProperty("blockSecondaryelement")).toBe(true);
   expect(result.current.blockSecondaryelement).toBe(

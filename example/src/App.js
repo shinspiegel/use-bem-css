@@ -30,11 +30,15 @@ const App = () => {
     elements: ["link"],
   });
 
+  const thing = Math.random() < 0.01 ? "bbb" : undefined;
+
   return (
     <main className={main}>
       <div className={hero}>
         <h1 className={heroTitle}>use-bem-css</h1>
-        <small className={heroSmall}>A small helper hook to create and maintain BEM styled css classes</small>
+        <small className={heroSmall}>
+          A small helper hook to create and maintain BEM styled css classes
+        </small>
       </div>
 
       <div className={usage}>
