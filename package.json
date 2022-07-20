@@ -1,6 +1,6 @@
 {
   "name": "@shinspiegel/use-bem-css",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "A hook to generate BEM styled string to use on classNames for react components",
   "homepage": "https://shinspiegel.github.io/use-bem-css/",
   "author": "ShinSpiegel",
@@ -49,6 +49,6 @@
     "rollup": "^2.74.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.2"
+    "typescript": "^4"
   }
 }
