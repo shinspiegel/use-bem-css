@@ -2,8 +2,8 @@ import { camelize, capitalize, kebabize } from "../utils";
 
 export type Option<ClassName extends string, Elements extends string> = {
   className: ClassName;
-  blocks?: string[];
-  elements?: Elements[];
+  blocks: (string | undefined)[];
+  elements?: (Elements | undefined)[];
   modifiers?: Modifier<ClassName, Elements>[];
 };
 
@@ -13,19 +13,10 @@ export type Modifier<ClassName extends string, Elements extends string> = {
   isActive?: boolean;
 };
 
-export type ReturnType<
-  ClassName extends string,
-  Elements extends string
-> = Record<
-  | Lowercase<ClassName>
-  | `${Lowercase<ClassName>}${Capitalize<Lowercase<Elements>>}`,
+export type UseBemCss<ClassName extends string, Elements extends string> = Record<
+  ClassName | `${ClassName}${Capitalize<Lowercase<Elements>>}`,
   string
 >;
-
-export type UseBemCss<
-  ClassName extends string,
-  Elements extends string
-> = ReturnType<ClassName, Elements>;
 
 export const useBemCss = <ClassName extends string, Elements extends string>({
   className,
@@ -41,6 +32,10 @@ export const useBemCss = <ClassName extends string, Elements extends string>({
   const prepare: Record<string, string[]> = {};
 
   blocks.filter(Boolean).forEach((block) => {
+    if (!block) {
+      return;
+    }
+
     /**
      * Will create the base blocks and add on the className
      * If there is multiple blocks it will create multiple entries
@@ -48,7 +43,7 @@ export const useBemCss = <ClassName extends string, Elements extends string>({
      * The value will be kebab-case
      */
     const blockValue = kebabize(block);
-    const blockKey = className.toLowerCase();
+    const blockKey = className;
 
     if (!prepare[blockKey]) {
       prepare[blockKey] = [];
@@ -63,6 +58,10 @@ export const useBemCss = <ClassName extends string, Elements extends string>({
      */
     if (elements && elements?.length > 0) {
       elements.filter(Boolean).forEach((element) => {
+        if (!element) {
+          return;
+        }
+
         const elementKey = capitalize(camelize(element.toLowerCase()));
         const elementValue = kebabize(element);
 
@@ -70,9 +69,7 @@ export const useBemCss = <ClassName extends string, Elements extends string>({
           prepare[`${blockKey}${elementKey}`] = [];
         }
 
-        prepare[`${blockKey}${elementKey}`].push(
-          `${blockValue}__${elementValue}`
-        );
+        prepare[`${blockKey}${elementKey}`].push(`${blockValue}__${elementValue}`);
       });
     }
   });
@@ -99,15 +96,13 @@ export const useBemCss = <ClassName extends string, Elements extends string>({
           });
         } else {
           affects.forEach((affected) => {
-            const affectedBlock = affected.toLowerCase();
-
-            if (prepare[affectedBlock]) {
-              prepare[affectedBlock].forEach((item) => {
-                prepare[affectedBlock].push(`${item}--${modifierValue}`);
+            if (prepare[affected]) {
+              prepare[affected].forEach((item) => {
+                prepare[affected].push(`${item}--${modifierValue}`);
               });
             }
 
-            const blockKey = className.toLowerCase();
+            const blockKey = className;
             const elementKey = capitalize(camelize(affected.toLowerCase()));
             const affectedElement = `${blockKey}${elementKey}`;
 
@@ -126,7 +121,7 @@ export const useBemCss = <ClassName extends string, Elements extends string>({
    * This will construct the element with the need typing
    * Will also run over all the prepared values and add as a single string on the typed `result`
    */
-  const result = {} as ReturnType<ClassName, Elements>;
+  const result = {} as Record<ClassName | `${ClassName}${Capitalize<Lowercase<Elements>>}`, string>;
 
   Object.keys(prepare).forEach((key) => {
     result[key] = prepare[key].join(" ");
