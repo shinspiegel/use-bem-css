@@ -28,10 +28,13 @@
     "registry": "https://registry.npmjs.org/"
   },
   "peerDependencies": {
-    "react": ">=16.9.0"
+    "react": ">=17.0.0",
+    "typescript": ">=4.6"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
+    "@babel/plugin-syntax-flow": "^7.18.6",
+    "@babel/plugin-transform-react-jsx": "^7.19.0",
     "@babel/runtime": "^7.18.3",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.0",
@@ -40,15 +43,15 @@
     "@rollup/plugin-url": "^7.0.0",
     "@testing-library/react-hooks": "^8.0.0",
     "@types/jest": "^27.5.1",
-    "@types/react": "^18.0.9",
+    "@types/react": "^17.0.0",
     "cross-env": "^7.0.3",
     "gh-pages": "^4.0.0",
-    "react": "^18.1.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "react-scripts": "^5.0.1",
-    "react-test-renderer": "^18.1.0",
     "rollup": "^2.74.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "tslib": "^2.4.0",
-    "typescript": "^4"
+    "typescript": "^4.6"
   }
 }
