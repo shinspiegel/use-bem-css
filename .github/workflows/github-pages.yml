@@ -2,12 +2,10 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: ["update-gibhub-pages"]
 
 jobs:
-  build:
+  release-github-pages:
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,6 +18,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - run: git config --global user.name "${{ secrets.GIT_USER_NAME }}"
+      - run: git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
       - run: yarn install
       - run: yarn build
-      - run: yarn test
+      - run: yarn predeploy
+      - run: yarn deploy
