@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/use-bem-css/static/css/main.d5c11577.css",
-    "main.js": "/use-bem-css/static/js/main.bdc3e432.js",
+    "main.js": "/use-bem-css/static/js/main.b7bacb5b.js",
     "index.html": "/use-bem-css/index.html",
     "main.d5c11577.css.map": "/use-bem-css/static/css/main.d5c11577.css.map",
-    "main.bdc3e432.js.map": "/use-bem-css/static/js/main.bdc3e432.js.map"
+    "main.b7bacb5b.js.map": "/use-bem-css/static/js/main.b7bacb5b.js.map"
   },
   "entrypoints": [
     "static/css/main.d5c11577.css",
-    "static/js/main.bdc3e432.js"
+    "static/js/main.b7bacb5b.js"
   ]
 }
