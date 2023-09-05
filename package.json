@@ -1,6 +1,6 @@
 {
   "name": "@shinspiegel/use-bem-css",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A hook to generate BEM styled string to use on classNames for react components",
   "homepage": "https://shinspiegel.github.io/use-bem-css/",
   "author": "ShinSpiegel",
@@ -21,7 +21,8 @@
     "start": "rollup -c -w",
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "format": "prettier src -w"
   },
   "publishConfig": {
     "access": "public",
@@ -54,6 +55,7 @@
     "cross-env": "^7.0.3",
     "gh-pages": "^4.0.0",
     "jsdom": "^20.0.1",
+    "prettier": "^3.0.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "rollup": "^2.74.1",

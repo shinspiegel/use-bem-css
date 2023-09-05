@@ -20,5 +20,5 @@ export const kebabize = (str: string): string => {
       return undefined;
     });
 
-  return result.join("").toLocaleLowerCase().replace(/--/g,'-');
+  return result.join("").toLocaleLowerCase().replace(/--/g, "-");
 };
