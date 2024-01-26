@@ -121,11 +121,7 @@ export const useBemCss = <ClassName extends string, Elements extends string>({
    * This will construct the element with the need typing
    * Will also run over all the prepared values and add as a single string on the typed `result`
    */
-  const result = {} as Record<ClassName | `${ClassName}${Capitalize<Lowercase<Elements>>}`, string>;
-
-  Object.keys(prepare).forEach((key) => {
-    result[key] = prepare[key].join(" ");
-  });
-
-  return result;
+  const result: Record<string, string> = {};
+  Object.keys(prepare).forEach((key) => (result[key] = prepare[key].join(" ")));
+  return result as Record<ClassName | `${ClassName}${Capitalize<Lowercase<Elements>>}`, string>;
 };

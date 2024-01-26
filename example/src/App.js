@@ -36,9 +36,7 @@ const App = () => {
     <main className={main}>
       <div className={hero}>
         <h1 className={heroTitle}>use-bem-css</h1>
-        <small className={heroSmall}>
-          A small helper hook to create and maintain BEM styled css classes
-        </small>
+        <small className={heroSmall}>A small helper hook to create and maintain BEM styled css classes</small>
       </div>
 
       <div className={usage}>
